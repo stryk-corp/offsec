@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kali Linux | Penetration Testing and Ethical Hacking Linux Distribution</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap">
+<style>
+:root{--bg:#010409;--bg2:#0b0f17;--panel:#16171d;--line:#262b38;--text:#e4e6ec;--mute:#98a0b3;--blue:#367bf0;--blue2:#5b9bff;--term:#07090d;--green:#4ee05b;--red:#ff5f56;--amber:#ffbd2e;--mono:'Fira Code',ui-monospace,Menlo,Consolas,monospace;--sans:'Noto Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f9f9f9;--bg2:#eef0f5;--panel:#fff;--line:#d9dde8;--text:#242738;--mute:#636363;--blue2:#2563d6}}
+:root[data-theme="light"]{--bg:#f9f9f9;--bg2:#eef0f5;--panel:#fff;--line:#d9dde8;--text:#242738;--mute:#636363;--blue2:#2563d6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(120px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 var(--sans)}
+a{color:var(--blue2);text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--blue2);outline-offset:2px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;height:62px;gap:14px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:20px;color:var(--text);letter-spacing:.02em}
+.logo:hover{text-decoration:none}.logo svg{width:32px;height:32px}
+#nav{display:flex;list-style:none;margin:0 0 0 auto;padding:0;gap:2px;align-items:center}
+#nav>li{position:relative}
+#nav>li>a,#nav>li>button{all:unset;cursor:pointer;display:block;padding:20px 11px;font-size:14px;color:var(--text)}
+#nav>li>a:hover,#nav>li>button:hover{color:var(--blue2);text-decoration:none}
+#nav .ctf{color:var(--blue2);font-weight:600}
+.menu{display:none;position:absolute;top:100%;left:0;min-width:220px;background:var(--panel);border:1px solid var(--line);border-radius:0 0 7px 7px;padding:6px;box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.dd:hover .menu,.dd:focus-within .menu{display:block}
+.menu a{display:block;padding:8px 12px;border-radius:4px;color:var(--text);font-size:14px}.menu a:hover{background:var(--bg2);color:var(--blue2);text-decoration:none}
+.burger{display:none;all:unset;cursor:pointer;margin-left:auto;padding:8px;font-size:22px}
+.sub{border-bottom:1px solid var(--line);background:var(--bg2);position:sticky;top:calc(62px + env(safe-area-inset-top,0px));z-index:19}
+.sub .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+.sub a{color:var(--mute);font-size:14px;padding:5px 14px;border-radius:99px;white-space:nowrap}.sub a:hover{background:var(--panel);color:var(--text);text-decoration:none}
+.sw{display:flex;align-items:center;gap:8px;margin-left:auto;font-size:12px;color:var(--mute)}
+.sw button{all:unset;cursor:pointer;width:38px;height:20px;border-radius:99px;background:var(--blue);position:relative}
+.sw button:after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:left .2s}
+:root[data-theme="light"] .sw button:after{left:21px}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .sw button:after{left:21px}}
+.hero{padding:70px 0 60px;background:radial-gradient(900px 420px at 80% -10%,rgba(54,123,240,.25),transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+h1{font-size:clamp(32px,4.8vw,52px);line-height:1.12;margin:0 0 18px;letter-spacing:-.02em}
+h1 span{color:var(--blue2)}
+.hero p{color:var(--mute);font-size:18px;max-width:50ch;margin:0 0 26px}
+.btn{display:inline-block;background:var(--blue);color:#fff;padding:11px 22px;border-radius:5px;font-weight:600;font-size:15px;margin:0 10px 10px 0}
+.btn:hover{text-decoration:none;filter:brightness(1.12)}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+.term{background:var(--term);border:1px solid #262b38;border-radius:9px;overflow:hidden;box-shadow:0 22px 60px rgba(0,0,0,.45);font:13px/1.55 var(--mono);color:#e4e6ec}
+.tbar{display:flex;gap:7px;align-items:center;padding:10px 14px;background:#14171f;border-bottom:1px solid #262b38}.tbar i{width:11px;height:11px;border-radius:50%}.tbar span{margin:0 auto;color:#8a93a8;font-size:12px}
+.term pre{margin:0;padding:16px;min-height:300px;overflow-x:auto}
+.p1{color:#367bf0}.p2{color:#5b9bff}.g{color:var(--green)}.r{color:var(--red)}.y{color:var(--amber)}.d{color:#6b748a}
+.cur{display:inline-block;width:8px;height:15px;background:currentColor;vertical-align:-2px;animation:bl 1s steps(2) infinite}@keyframes bl{50%{opacity:0}}
+section{padding:76px 0;border-top:1px solid var(--line)}section.alt{background:var(--bg2)}
+h2{font-size:clamp(26px,3.4vw,36px);margin:0 0 10px;letter-spacing:-.015em}.lead{color:var(--mute);max-width:66ch;margin:0 0 36px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:8px;background:var(--panel);margin-top:-30px;position:relative}
+.stats div{padding:20px 22px;border-right:1px solid var(--line)}.stats div:last-child{border:0}.stats b{display:block;font:500 26px var(--mono);color:var(--blue2)}.stats small{color:var(--mute)}
+.plat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pc{background:var(--c);color:#1c2233;border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:10px;transition:transform .18s,box-shadow .18s}
+.pc:hover{text-decoration:none;transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.pc svg{width:54px;height:54px;color:#1c2233}.pc h3{margin:0;font-size:18px}
+.pc ul{list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.45}.pc li{padding-left:20px;position:relative;margin:3px 0}
+.pc .pos li:before{content:"✓";position:absolute;left:0;color:#0d8a3a;font-weight:700}.pc .neg li:before{content:"✕";position:absolute;left:0;color:#c0392b;font-weight:700}
+.pc p{margin:auto 0 0;font-size:13.5px;color:#3b4254}
+.pc.rec:after{content:"Recommended";align-self:flex-start;font-size:11px;font-weight:700;background:#1c2233;color:#fff;padding:2px 9px;border-radius:99px;order:-1}
+.tools{display:grid;grid-template-columns:230px 1fr;gap:22px}
+.tabs{display:flex;flex-direction:column;gap:4px}.tabs button{all:unset;cursor:pointer;padding:11px 14px;border-radius:5px;color:var(--mute);font-size:15px;border-left:3px solid transparent}
+.tabs button:hover{background:var(--panel);color:var(--text)}.tabs button[aria-selected=true]{background:var(--panel);color:var(--text);border-left-color:var(--blue)}
+.pane{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;min-height:290px}.pane h3{margin:0 0 4px}.pane>p{color:var(--mute);margin:0 0 18px;font-size:15px}
+.tl{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.tl div{background:var(--term);border:1px solid #262b38;border-radius:5px;padding:10px 12px;color:#e4e6ec}.tl code{font:500 14px var(--mono);color:#5b9bff}.tl span{display:block;font-size:12.5px;color:#8a93a8;line-height:1.4;margin-top:2px}
+.nh{display:grid;grid-template-columns:250px 1fr;gap:44px;align-items:center}
+.phone{width:240px;height:480px;border-radius:34px;background:#0c0e13;border:6px solid #2a2f3d;box-shadow:0 18px 50px rgba(0,0,0,.5);position:relative;overflow:hidden;margin:0 auto}
+.phone:before{content:"";position:absolute;top:8px;left:50%;width:70px;height:6px;margin-left:-35px;border-radius:9px;background:#2a2f3d;z-index:3}
+.scr{position:absolute;inset:26px 8px 12px;opacity:0;animation:cyc 16s infinite;font:11.5px/1.6 var(--mono);color:#e4e6ec;display:flex;flex-direction:column;gap:5px}
+.scr:nth-child(2){animation-delay:4s}.scr:nth-child(3){animation-delay:8s}.scr:nth-child(4){animation-delay:12s}
+@keyframes cyc{0%{opacity:0}4%,24%{opacity:1}28%,100%{opacity:0}}
+.scr h4{margin:0 0 6px;font:700 14px var(--sans);color:#5b9bff}.scr .row{background:#161a24;border-radius:8px;padding:9px 10px;border-left:3px solid #367bf0}
+.feat{list-style:none;padding:0;margin:0;display:grid;gap:10px}.feat li{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:12px 16px;font-size:15px}.feat b{color:var(--blue2)}
+.wsl{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.desk{position:relative;aspect-ratio:16/10;border-radius:8px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.45);background:linear-gradient(135deg,#0b1a3a,#1d3f87 55%,#367bf0)}
+.desk .bar{position:absolute;top:0;left:0;right:0;height:6%;background:rgba(0,0,0,.6)}
+.desk .w{position:absolute;right:5%;bottom:14%;width:55%;height:55%;background:var(--term);border-radius:5px;font:10px/1.5 var(--mono);color:#e4e6ec;padding:8px;opacity:0;animation:win 10s infinite}
+.desk .mn{position:absolute;left:0;top:6%;width:42%;height:70%;background:rgba(21,25,34,.95);padding:8px;font-size:10.5px;color:#e4e6ec;opacity:0;animation:mn 10s infinite}
+.desk .mn i{display:block;padding:3px 6px;font-style:normal;border-radius:3px}.desk .mn i:nth-child(2){background:#367bf0}
+@keyframes win{0%,25%{opacity:0;transform:translateY(12px)}35%,60%{opacity:1;transform:none}70%,100%{opacity:0}}
+@keyframes mn{0%,60%{opacity:0}70%,92%{opacity:1}100%{opacity:0}}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:22px;color:var(--text)}.card:hover{text-decoration:none;border-color:var(--blue)}
+.card h3{margin:0 0 8px;font-size:17px}.card p{margin:0;color:var(--mute);font-size:15px}.card .ln{display:block;margin-top:12px;color:var(--blue2);font-size:14px}
+.package-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:820px}
+.package-card{display:flex;flex-direction:column;min-height:220px}
+.package-price{display:block;margin-top:auto;padding-top:20px;font:500 20px var(--mono);color:var(--blue2)}
+.package-card .ln{font-weight:600}
+.warn{border:1px solid var(--amber);border-left-width:4px;background:color-mix(in srgb,var(--amber) 9%,var(--panel));border-radius:6px;padding:16px 20px;margin-top:30px;font-size:15px}.warn b{color:var(--amber)}
+footer{border-top:1px solid var(--line);padding:46px 0 34px;background:var(--bg2);color:var(--mute);font-size:14px}
+footer .cols{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}footer h4{color:var(--text);margin:0 0 10px;font-size:14px}footer a{display:block;color:var(--mute);margin:5px 0}footer a:hover{color:var(--blue2)}
+footer .fb{border-top:1px solid var(--line);margin-top:30px;padding-top:20px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+@media (prefers-reduced-motion:reduce){.cur{animation:none}.scr{animation:none}.scr:first-child{opacity:1}.desk .w,.desk .mn{animation:none;opacity:1}html{scroll-behavior:auto}}
+@media (max-width:900px){.hero .wrap,.tools,.nh,.wsl,.g3,footer .cols{grid-template-columns:1fr}.plat{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.stats div:nth-child(2){border-right:0}.stats div{border-bottom:1px solid var(--line)}.tabs{flex-direction:row;overflow-x:auto}.tabs button{white-space:nowrap;border-left:0;border-bottom:3px solid transparent}.tabs button[aria-selected=true]{border-bottom-color:var(--blue)}
+.burger{display:block}#nav{display:none;position:absolute;top:62px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 22px;max-height:75vh;overflow:auto}#nav.open{display:flex}#nav>li>a,#nav>li>button{padding:11px 4px}.menu{display:block;position:static;box-shadow:none;border:0;padding:0 0 4px 12px;background:none}}
+@media (max-width:560px){.plat{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-inst" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="26" rx="3"/><path d="M16 42h16M24 36v6M24 16v10m-5-4 5 5 5-5"/></symbol>
+<symbol id="i-vm" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5 41 14v20L24 43 7 34V14z"/><path d="M7 14l17 9 17-9M24 23v20"/></symbol>
+<symbol id="i-arm" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="13" width="22" height="22" rx="3"/><rect x="19" y="19" width="10" height="10"/><path d="M19 6v7M29 6v7M19 35v7M29 35v7M6 19h7M6 29h7M35 19h7M35 29h7"/></symbol>
+<symbol id="i-mob" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="4" width="20" height="40" rx="4"/><path d="M21 8h6M22 38h4M19 18l5 4-5 4M26 27h4"/></symbol>
+<symbol id="i-cld" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 36a9 9 0 0 1-1-17.9A12 12 0 0 1 36 16a10 10 0 0 1 0 20z"/><path d="M24 40V26m-5 4 5-5 5 5"/></symbol>
+<symbol id="i-con" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h40l-3 12c-1 5-6 8-12 8H19c-6 0-11-3-12-8z"/><path d="M10 22v-7h6v7M18 22v-11h6v11M26 22v-7h6v7"/></symbol>
+<symbol id="i-usb" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4v30M24 34a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM24 20l9-6v-4M24 26l-9-6"/><rect x="31" y="6" width="6" height="6"/><circle cx="14" cy="19" r="2.5"/></symbol>
+<symbol id="i-wsl" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="16" height="16"/><rect x="26" y="6" width="16" height="16"/><rect x="6" y="26" width="16" height="16"/><rect x="26" y="26" width="16" height="16"/></symbol>
+</defs></svg>
+
+<header><div class="wrap">
+<a class="logo" href="https://www.kali.org/" aria-label="Kali Linux home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#367bf0"/><path d="M6 22c4-1 6-5 8-9 1-3 3-5 6-6-1 2-1 4 0 5 2-1 4-1 6 0-3 1-5 3-6 6-1 4-4 7-9 8 2-1 3-3 3-5-3 1-6 1-8 1z" fill="#fff"/></svg>Kali Linux</a>
+<button class="burger" id="bg" aria-label="Show menu" aria-expanded="false">☰</button>
+<ul id="nav">
+<li><a class="ctf" href="https://www.offsec.com/events/the-gauntlet/?utm_source=kali&utm_medium=web&utm_campaign=menu">Join Free CTF</a></li>
+<li><a href="buy/order.html">Get Kali</a></li>
+<li><a href="https://www.kali.org/blog/">Blog</a></li>
+<li class="dd"><button>Documentation ▾</button><div class="menu"><a href="https://www.kali.org/docs/">Documentation Pages</a><a href="https://www.kali.org/tools/">Tools Documentation</a><a href="https://www.kali.org/faq/">Frequently Asked Questions</a><a href="https://bugs.kali.org/">Known Issues</a></div></li>
+<li class="dd"><button>Community ▾</button><div class="menu"><a href="https://www.kali.org/community/">Community Support</a><a href="https://forums.kali.org/">Forums</a><a href="https://discord.kali.org/">Discord</a><a href="https://www.kali.org/newsletter/">Join Newsletter</a><a href="https://http.kali.org/README?mirrorlist">Mirror Location</a><a href="https://www.kali.org/docs/community/contribute/">Get Involved</a></div></li>
+<li><a href="https://www.offsec.com/kali-training/courses/?utm_source=kali&utm_medium=web&utm_campaign=menu">Courses</a></li>
+<li class="dd"><button>Developers ▾</button><div class="menu"><a href="https://gitlab.com/kalilinux">Git Repositories</a><a href="https://pkg.kali.org/">Packages</a><a href="https://autopkgtest.kali.org/">Auto Package Test</a><a href="https://bugs.kali.org/">Bug Tracker</a><a href="https://nethunter.kali.org/">Kali NetHunter Stats</a></div></li>
+<li class="dd"><button>About ▾</button><div class="menu"><a href="https://www.kali.org/features/">Kali Linux Overview</a><a href="https://www.kali.org/wallpapers/">Wallpapers</a><a href="https://www.kali.org/about-us/">Meet The Kali Team</a><a href="https://www.kali.org/partnerships/">Partnerships</a><a href="https://www.kali.org/contact/">Contact Us</a></div></li>
+</ul></div></header>
+<div class="sub"><div class="wrap"><a href="#platforms">Platforms</a><a href="#packages">Packages</a><a href="#tools">Tools</a><a href="#nethunter">NetHunter</a><a href="#wsl">WSL</a><a href="#learn">Learn</a><div class="sw"><span>LIGHT</span><button id="tg" aria-label="Toggle light or dark theme"></button><span>DARK</span></div></div></div>
+
+<div class="hero"><div class="wrap">
+<div>
+<h1>The most advanced <span>Penetration Testing</span> Distribution<span class="cur" style="width:.12em;height:.9em;margin-left:6px;vertical-align:-.08em"></span></h1>
+<p>Kali Linux is an open-source, Debian-based distribution for penetration testing, ethical hacking, forensics and network security assessments, with over 600 tools ready on first boot.</p>
+<a class="btn" href="buy/order.html">Get Kali</a><a class="btn ghost" href="#platforms">Choose your platform</a>
+</div>
+<div class="term" role="img" aria-label="Animated terminal running an nmap scan"><div class="tbar"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i><span>kali@kali: ~</span></div><pre id="tp"></pre></div>
+</div></div>
+
+<div class="wrap"><div class="stats"><div><b>600+</b><small>pre-installed tools</small></div><div><b>2013</b><small>first release</small></div><div><b>4×</b><small>point releases a year</small></div><div><b>8</b><small>ways to run Kali</small></div></div></div>
+
+<section id="platforms"><div class="wrap">
+<h2>Choose your platform<span class="cur" style="width:3px;height:.9em;margin-left:4px;vertical-align:-.1em;color:var(--blue2)"></span></h2>
+<p class="lead">Kali runs on bare metal, virtual machines, small boards, phones, the cloud, containers and Windows. Pick the one that fits how you work, then follow its documentation.</p>
+<div class="plat">
+<a class="pc rec" style="--c:#dfdfdf" href="https://www.kali.org/docs/installation/"><svg><use href="#i-inst"/></svg><h3>Installer Images</h3><ul class="pos"><li>Direct access to hardware</li><li>Customized Kali kernel</li><li>No overhead</li></ul><p>Single or multi-boot Kali with full hardware control, ideal for built-in Wi-Fi and GPUs.</p></a>
+<a class="pc rec" style="--c:#c5fff4" href="https://www.kali.org/docs/virtualization/"><svg><use href="#i-vm"/></svg><h3>Virtual Machines</h3><ul class="pos"><li>Snapshots</li><li>Isolated environment</li></ul><ul class="neg"><li>Limited hardware access</li><li>Higher system requirements</li></ul><p>VMware, VirtualBox, Hyper-V and QEMU images, plus Vagrant boxes for quick spin-up.</p></a>
+<a class="pc" style="--c:#f2d9e3" href="https://www.kali.org/docs/arm/"><svg><use href="#i-arm"/></svg><h3>ARM</h3><ul class="pos"><li>From leave-behind devices to servers</li></ul><ul class="neg"><li>Some packages limited by architecture</li></ul><p>Runs on low-power single board computers and modern ARM laptops.</p></a>
+<a class="pc" style="--c:#d9eef2" href="https://www.kali.org/docs/nethunter/"><svg><use href="#i-mob"/></svg><h3>Mobile</h3><ul class="pos"><li>Kali layered on Android</li><li>Kali in your pocket</li><li>Compact mobile interface</li></ul><p>NetHunter app, app store, Kali container and KeX for supported devices.</p></a>
+<a class="pc" style="--c:#cddbee" href="https://www.kali.org/docs/cloud/"><svg><use href="#i-cld"/></svg><h3>Cloud</h3><ul class="pos"><li>Fast deployment</li><li>Use the provider's resources</li></ul><ul class="neg"><li>Can become costly</li></ul><p>Ready-to-go Kali on AWS, Azure, Linode and DigitalOcean.</p></a>
+<a class="pc" style="--c:#ededed" href="https://www.kali.org/docs/containers/"><svg><use href="#i-con"/></svg><h3>Containers</h3><ul class="pos"><li>Low overhead toolset access</li></ul><ul class="neg"><li>Userland actions only</li><li>No direct hardware access</li></ul><p>Docker and LXC/LXD for quick access without a full virtual machine.</p></a>
+<a class="pc" style="--c:#f2e8d9" href="https://www.kali.org/docs/usb/"><svg><use href="#i-usb"/></svg><h3>Live Boot</h3><ul class="pos"><li>Host system untouched</li><li>Direct hardware access</li></ul><ul class="neg"><li>Slower under heavy I/O</li></ul><p>Run a full Kali from USB, DVD or PXE without installing anything.</p></a>
+<a class="pc" style="--c:#ededed" href="https://www.kali.org/docs/wsl/"><svg><use href="#i-wsl"/></svg><h3>WSL</h3><ul class="pos"><li>Toolset inside Windows</li><li>Win-KeX desktop</li></ul><ul class="neg"><li>Userland actions only</li></ul><p>Use Kali alongside Windows with the Windows Subsystem for Linux.</p></a>
+</div>
+<p style="margin-top:22px"><a href="https://gitlab.com/kalilinux/build-scripts"><b>Build scripts</b></a> for every image are public on GitLab, so you can read, audit and change how Kali is built.</p>
+</div></section>
+
+<section class="alt" id="packages"><div class="wrap">
+<h2>Packages</h2>
+<p class="lead">Focused learning and script packages, each with a step-by-step tutorial.</p>
+<div class="package-grid">
+<a class="card package-card" href="buy/package-order.html?product=ethical-hacking">
+<h3>Advanced DDoS Script Order</h3>
+<p>Advanced DDoS scripts with a step-by-step tutorial. For authorized security testing only.</p>
+<span class="package-price">$3.2</span>
+<span class="ln">View package and purchase</span>
+</a>
+<a class="card package-card" href="buy/package-order.html?product=forensics">
+<h3>Advanced CCTV/Webcam Forensics Package</h3>
+<p>Advanced digital forensics package with a step-by-step tutorial.</p>
+<span class="package-price">$9.8</span>
+<span class="ln">View package and purchase</span>
+</a>
+</div></div></section>
+
+<section class="alt" id="tools"><div class="wrap">
+<h2>Tools for every stage of an assessment</h2>
+<p class="lead">Grouped by the flow of a real engagement. Full documentation for every package lives on <a href="https://www.kali.org/tools/">kali.org/tools</a>.</p>
+<div class="tools"><div class="tabs" role="tablist" id="tabs"></div><div class="pane" id="pane" role="tabpanel"></div></div>
+</div></section>
+
+<section id="nethunter"><div class="wrap">
+<h2>Kali NetHunter</h2>
+<p class="lead">The first open-source Android penetration testing platform. A touch-friendly interface, a custom kernel with 802.11 wireless injection, and the full Kali toolset in your pocket.</p>
+<div class="nh">
+<div class="phone" role="img" aria-label="Animated NetHunter app screens">
+<div class="scr"><h4>NetHunter</h4><div class="row">Kali Services</div><div class="row">Custom Commands</div><div class="row">MAC Changer</div><div class="row">KeX Manager</div><div class="row">Wireless Attacks</div></div>
+<div class="scr"><h4>Kali Terminal</h4><span><span class="p2">┌──(kali㉿nethunter)</span><br><span class="p1">└─$</span> iwconfig wlan1<br>wlan1 IEEE 802.11 Mode:<span class="g">Monitor</span><br><span class="p1">└─$</span> airodump-ng wlan1<br><span class="d">BSSID  PWR  CH  ENC</span><br>A4:2B:…  -41   6  WPA2<br><span class="p1">└─$</span> <span class="cur"></span></span></div>
+<div class="scr"><h4>MANA Evil AP</h4><div class="row">SSID: <span class="y">Free_Airport_WiFi</span></div><div class="row">Mode: <span class="g">Enabled</span></div><div class="row">Clients: 3</div><div class="row">Logging: on</div></div>
+<div class="scr"><h4>HID Attacks</h4><div class="row">Keyboard layout: US</div><div class="row">Windows CMD</div><div class="row">PowerShell payloads</div><div class="row">Preview, then execute</div></div>
+</div>
+<ul class="feat">
+<li><b>NetHunter App</b> with one-click MANA Evil Access Point setups, USB HID keyboard attacks, BadUSB MITM and Bluetooth attacks.</li>
+<li><b>Full Kali toolset</b> through a menu system, plus a command line to the Kali container.</li>
+<li><b>Kali desktop EXperience (KeX)</b> and HDMI output of the Kali desktop on supported devices.</li>
+<li><b>Device-specific kernel</b> with wireless injection and USB Y-cable charging while on OTG.</li>
+<li><b>Software defined radio</b> support, and the NetHunter App Store to extend it.</li>
+<li>Also available as <b>NetHunter Pro</b> for the PinePhone and PinePhone Pro. <a href="https://www.kali.org/docs/nethunter-pro/">Read the docs</a></li>
+</ul></div></div></section>
+
+<section class="alt" id="wsl"><div class="wrap">
+<h2>Kali on Windows with Win-KeX</h2>
+<p class="lead">Windows Subsystem for Linux ships with modern Windows. Run Kali beside it with less overhead than a virtual machine, and add the Win-KeX desktop when you want a full Kali interface.</p>
+<div class="wsl">
+<div class="desk" role="img" aria-label="Animated Win-KeX desktop with terminal and menu"><div class="bar"></div><div class="mn"><i>Kali Linux</i><i>01 - Information Gathering</i><i>02 - Vulnerability Analysis</i><i>03 - Web Application Analysis</i><i>05 - Password Attacks</i><i>06 - Wireless Attacks</i></div><div class="w"><span class="p2">kali@kali</span>:~$ nmap -sV target<br><span class="g">80/tcp open http</span><br><span class="g">443/tcp open https</span><br>:~$ <span class="cur"></span></div></div>
+<div><p style="color:var(--mute)">WSL gives you the Kali toolset in userland. It has the same limits as other containers: no direct hardware access and a stock Microsoft kernel.</p><a class="btn" href="https://www.kali.org/docs/wsl/">WSL documentation</a><a class="btn ghost" href="https://www.kali.org/docs/wsl/win-kex/">Win-KeX guide</a>
+<div class="warn"><b>Use Kali responsibly.</b> Only test systems you own or have written permission to assess.</div></div>
+</div></div></section>
+
+<section id="learn"><div class="wrap">
+<h2>Learn, ask, contribute</h2>
+<p class="lead">Documentation, courses and a worldwide community of practitioners.</p>
+<div class="g3">
+<a class="card" href="https://www.kali.org/docs/"><h3>Documentation</h3><p>Guides for every platform and usage examples for each tool.</p><span class="ln">Read the docs</span></a>
+<a class="card" href="https://www.offsec.com/kali-training/courses/"><h3>Courses</h3><p>Official OffSec training, including hands-on Kali courses.</p><span class="ln">Browse courses</span></a>
+<a class="card" href="https://www.offsec.com/events/the-gauntlet/"><h3>Free CTF</h3><p>Practise on live challenges in OffSec's free capture the flag.</p><span class="ln">Join the CTF</span></a>
+<a class="card" href="https://forums.kali.org/"><h3>Forums</h3><p>Ask questions and share setups with other users.</p><span class="ln">Open the forums</span></a>
+<a class="card" href="https://discord.kali.org/"><h3>Discord</h3><p>Chat in real time with the community and the team.</p><span class="ln">Join Discord</span></a>
+<a class="card" href="https://www.kali.org/docs/community/contribute/"><h3>Get involved</h3><p>Package tools, fix bugs, improve docs and translate.</p><span class="ln">Start contributing</span></a>
+</div></div></section>
+
+<footer><div class="wrap"><div class="cols">
+<div><h4>Links</h4><a href="https://www.kali.org/">Home</a><a href="buy/order.html">Download / Get Kali</a><a href="https://www.kali.org/blog/">Blog</a><a href="https://www.kali.org/docs/">OS Documentation</a><a href="https://www.kali.org/tools/">Tool Documentation</a><a href="https://status.kali.org/">System Status</a><a href="https://old.kali.org/">Archived Releases</a><a href="https://www.kali.org/partnerships/">Partnerships</a></div>
+<div><h4>Platforms</h4><a href="https://arm.kali.org/">ARM (SBC)</a><a href="https://nethunter.kali.org/">NetHunter (Mobile)</a><a href="https://aws.amazon.com/marketplace/pp/B08LL91KKB">Amazon AWS</a><a href="https://hub.docker.com/u/kalilinux">Docker</a><a href="https://www.linode.com/marketplace/apps/kali-linux/kali-linux/">Linode</a><a href="https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali">Microsoft Azure</a><a href="https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07">Microsoft Store (WSL)</a><a href="https://portal.cloud.hashicorp.com/vagrant/discover/kalilinux">Vagrant</a></div>
+<div><h4>Development</h4><a href="https://bugs.kali.org/">Bug Tracker</a><a href="https://autopkgtest.kali.org/">Continuous Integration</a><a href="https://http.kali.org/README?mirrorlist">Network Mirror</a><a href="https://pkg.kali.org/">Package Tracker</a><a href="https://gitlab.com/kalilinux">GitLab</a></div>
+<div><h4>Community</h4><a href="https://discord.kali.org/">Discord</a><a href="https://forums.kali.org/">Support Forum</a><a href="https://video.infosec.exchange/c/kalilinux/videos">PeerTube</a><h4 style="margin-top:16px">Follow Us</h4><a href="https://bsky.app/profile/kalilinux.bsky.social">Bluesky</a><a href="https://x.com/kalilinux">X</a><a href="https://infosec.exchange/@kalilinux">Mastodon</a><a href="https://www.kali.org/newsletter/">Newsletter</a><a href="https://www.kali.org/rss.xml">RSS</a></div>
+<div><h4>Policies</h4><a href="https://www.kali.org/docs/policy/cookie/">Cookie Policy</a><a href="https://www.kali.org/docs/policy/privacy/">Privacy Policy</a><a href="https://www.kali.org/docs/policy/trademark/">Trademark Policy</a></div>
+</div>
+<div class="fb"><span>Concept page inspired by kali.org. Kali Linux and its logo are trademarks of OffSec. © OffSec Services Limited 2026.</span><span>Kali Linux is part of <a href="https://www.offsec.com/community/?utm_source=kali&utm_medium=web&utm_campaign=www#projects">OffSec's Community Projects</a></span></div>
+</div></footer>
+
+<script>
+var T=[
+["Information Gathering","Map the target before touching it.",[["nmap","Network and port scanner"],["recon-ng","Modular web recon framework"],["theHarvester","Emails and hosts from public sources"],["dnsenum","DNS enumeration"],["amass","Attack surface mapping"]]],
+["Vulnerability Analysis","Find known weaknesses.",[["nikto","Web server scanner"],["openvas","Full vulnerability scanner"],["lynis","Unix security auditing"],["sqlmap","SQL injection testing"],["searchsploit","Offline Exploit-DB search"]]],
+["Web Applications","Test sites and APIs.",[["burpsuite","Intercepting proxy platform"],["zaproxy","OWASP ZAP scanner"],["gobuster","Directory and DNS brute force"],["ffuf","Fast web fuzzer"],["wpscan","WordPress scanner"]]],
+["Password Attacks","Test credential strength.",[["john","John the Ripper"],["hashcat","GPU hash cracking"],["hydra","Online login tester"],["crunch","Wordlist generator"],["cewl","Wordlists from websites"]]],
+["Wireless","Audit Wi-Fi and Bluetooth.",[["aircrack-ng","WPA key auditing suite"],["wifite","Automated wireless auditing"],["kismet","Wireless detector"],["reaver","WPS testing"],["mdk4","Wireless stress testing"]]],
+["Exploitation","Prove a weakness is real.",[["metasploit","Exploit framework"],["msfvenom","Payload generator"],["beef-xss","Browser exploitation"],["setoolkit","Social-Engineer Toolkit"],["impacket","Network protocol toolkit"]]],
+["Sniffing and Spoofing","Watch network traffic.",[["wireshark","Protocol analyser"],["tcpdump","CLI packet capture"],["ettercap","MITM test suite"],["bettercap","Network monitoring"],["responder","LLMNR poisoner"]]],
+["Forensics and Reversing","Investigate and take apart.",[["autopsy","Forensics platform"],["volatility3","Memory forensics"],["binwalk","Firmware analysis"],["ghidra","Reverse engineering suite"],["radare2","Disassembler framework"]]]
+];
+var tabs=document.getElementById('tabs'),pane=document.getElementById('pane');
+function show(i){[].forEach.call(tabs.children,function(b,j){b.setAttribute('aria-selected',j===i)});var t=T[i],h='<h3>'+t[0]+'</h3><p>'+t[1]+'</p><div class="tl">';t[2].forEach(function(x){h+='<div><code>'+x[0]+'</code><span>'+x[1]+'</span></div>'});pane.innerHTML=h+'</div>'}
+T.forEach(function(t,i){var b=document.createElement('button');b.textContent=t[0];b.setAttribute('role','tab');b.onclick=function(){show(i)};tabs.appendChild(b)});show(0);
+document.getElementById('tg').onclick=function(){var r=document.documentElement,d=r.getAttribute('data-theme'),dark=d?d==='dark':!matchMedia('(prefers-color-scheme: light)').matches;r.setAttribute('data-theme',dark?'light':'dark')};
+var bg=document.getElementById('bg'),nv=document.getElementById('nav');bg.onclick=function(){bg.setAttribute('aria-expanded',nv.classList.toggle('open'))};
+var P='<span class="p1">┌──(</span><span class="p2">kali㉿kali</span><span class="p1">)-[</span>~<span class="p1">]</span>\n<span class="p1">└─$</span> ';
+var L=[P+'nmap -sV -sC 10.10.10.5','Starting Nmap 7.95 ( https://nmap.org )','Nmap scan report for 10.10.10.5','Host is up (0.021s latency).','<span class="d">PORT     STATE SERVICE VERSION</span>','<span class="g">22/tcp   open</span>  ssh     OpenSSH 8.9p1','<span class="g">80/tcp   open</span>  http    Apache 2.4.52','<span class="y">3306/tcp open</span>  mysql   MySQL 8.0.36','<span class="r">445/tcp  filtered</span> microsoft-ds','Nmap done: 1 IP address scanned in 9.41s','',P+'searchsploit apache 2.4.52','<span class="d">Exploits: No Results</span>','',P+'<span class="cur"></span>'];
+var tp=document.getElementById('tp'),n=0;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){tp.innerHTML=L.join('\n')}else{(function s(){tp.innerHTML=L.slice(0,++n).join('\n');if(n<L.length)setTimeout(s,n===1?500:360)})()}
+</script>
+</body>
+</html>
